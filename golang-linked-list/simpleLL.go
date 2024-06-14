@@ -19,6 +19,15 @@ func (l *linkedList) insert(num int) {
 		l.head = newNode
 	} else {
 		iterator := l.head
+		for ; iterator.next != nil; iterator = iterator.next {
+
+		}
+		iterator.next = newNode
 	}
 
+}
+
+func main() {
+	l := linkedList{}
+	l.insert(3)
 }
