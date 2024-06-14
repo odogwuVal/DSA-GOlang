@@ -15,6 +15,10 @@ type linkedList struct {
 	len  int
 }
 
+func (n node) String() string {
+	return fmt.Sprintf("%d", n.number)
+}
+
 func (l *linkedList) insert(num int) {
 	newNode := new(node)
 	newNode.number = num
@@ -32,15 +36,31 @@ func (l *linkedList) insert(num int) {
 
 }
 
-func (l linkedList) string() string {
+func (l linkedList) Get(num int) *node {
+	for iterator := l.head; iterator != nil; iterator = iterator.next {
+		if iterator.number == num {
+			return iterator
+		}
+	}
+	return nil
+}
+
+func (l linkedList) String() string {
 	sb := strings.Builder{}
-	for iterator := l.head; iterator.next != nil; iterator.next {
-		sb.WriteString(fmt.Sprintf("%d", iterator.number))
+	for iterator := l.head; iterator != nil; iterator = iterator.next {
+		sb.WriteString(fmt.Sprintf("%s", iterator))
+		if iterator.next != nil {
+			sb.WriteString(" -> ")
+		}
 	}
 	return sb.String()
 }
 
 func main() {
 	l := linkedList{}
-	l.insert(3)
+	l.insert(1)
+	l.insert(2)
+	l.insert(4)
+	fmt.Println(l)
+	fmt.Println(l.Get(1))
 }
