@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 type node struct {
 	number int
 	next   *node
@@ -25,6 +30,14 @@ func (l *linkedList) insert(num int) {
 		iterator.next = newNode
 	}
 
+}
+
+func (l linkedList) string() string {
+	sb := strings.Builder{}
+	for iterator := l.head; iterator.next != nil; iterator.next {
+		sb.WriteString(fmt.Sprintf("%d", iterator.number))
+	}
+	return sb.String()
 }
 
 func main() {
