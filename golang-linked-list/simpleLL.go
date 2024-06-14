@@ -60,6 +60,39 @@ func (l *linkedList) Remove(num int) {
 	}
 }
 
+func (l *linkedList) RemovePosition(position int) {
+	if position == 0 {
+		l.head = l.head.next
+	} else {
+		iterator := l.head
+		for i := 0; i < position-1; i++ {
+			iterator = iterator.next
+		}
+		iterator.next = iterator.next.next
+	}
+}
+
+func (l *linkedList) Prepend(num int) {
+	newNode := &node{number: num}
+	temp := l.head
+	l.head = newNode
+	l.head.next = temp
+}
+
+func (l *linkedList) InsertPosition(num int, position int) {
+	newNode := &node{number: num}
+	if position == 0 {
+		l.Prepend(num)
+	} else {
+		iterator := l.head
+		for i := 0; i < position-1; i++ {
+			iterator = iterator.next
+		}
+		newNode.next = iterator.next
+		iterator.next = newNode
+	}
+}
+
 func (l linkedList) String() string {
 	sb := strings.Builder{}
 	for iterator := l.head; iterator != nil; iterator = iterator.next {
@@ -76,7 +109,11 @@ func main() {
 	l.insert(1)
 	l.insert(2)
 	l.insert(4)
-	l.Remove(1)
+	l.insert(5)
+	// l.Prepend(3)
+	// l.InsertPosition(7, 3)
+	// l.Remove(1)
+	l.RemovePosition(0)
 	fmt.Println(l)
 	// fmt.Println(l.Get(1))
 }
