@@ -113,7 +113,7 @@ func main() {
 	// l.Prepend(3)
 	// l.InsertPosition(7, 3)
 	// l.Remove(1)
-	l.RemovePosition(0)
+	l.RemovePosition(3)
 	fmt.Println(l)
 	// fmt.Println(l.Get(1))
 }
