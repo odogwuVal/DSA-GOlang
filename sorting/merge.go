@@ -10,8 +10,10 @@ func merge(left []int, right []int) []int {
 	for i < len(left) && j < len(right) {
 		if left[i] < right[j] {
 			final = append(final, left[i])
+			i++
 		} else {
 			final = append(final, right[j])
+			j++
 		}
 	}
 	for ; i < len(left); i++ {
