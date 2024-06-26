@@ -26,13 +26,16 @@ func (h *MaxHeap) heapify(length, i int) {
 	}
 }
 
+// sort sorts the array using heap sort algorithm.
 func (h *MaxHeap) sort() {
 	length := len(h.slice)
 
+	// Build the max heap
 	for i := length/2 - 1; i >= 0; i-- {
 		h.heapify(length, i)
 	}
 
+	// Extract elements from heap one by one
 	for i := length - 1; i >= 0; i-- {
 		h.slice[0], h.slice[i] = h.slice[i], h.slice[0]
 		h.heapify(i, 0)
