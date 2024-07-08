@@ -15,7 +15,7 @@ func maxVal(arr []int) float64 {
 func Radixsort(arr []int) []int {
 	max := maxVal(arr)
 	exp := 1
-	for int(max/exp) > 0 {
+	for int(max/float64(exp)) > 0 {
 		arr = countSort(arr, exp)
 		exp *= 10
 	}
